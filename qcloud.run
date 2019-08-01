@@ -1,0 +1,6 @@
+reset;
+model qcloud.mod;
+data qcloud.dat;
+option solver cplex;
+solve;
+display fo;

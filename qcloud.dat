@@ -10,7 +10,8 @@
 
 set I := H D V1 V2 V3 V4 V5 V6 V7 V8; 
 set J := 1 2 3 4 5 6;
-
+set Bool := 0 1;
+set NotVirt := D;
 
 # Popolamento vettori per i tipi di server
 
@@ -54,3 +55,4 @@ V5 		2
 V6 		1
 V7 		3
 V8		4	;
+
