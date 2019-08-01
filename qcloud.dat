@@ -45,7 +45,7 @@ param MaxEccessoServer := 5;
 # Server che si vogliono inserire
 
 param : Richieste :=
-H 		16
+H 		18
 D 		9
 V1 		4
 V2 		6

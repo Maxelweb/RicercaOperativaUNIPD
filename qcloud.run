@@ -4,3 +4,4 @@ data qcloud.dat;
 option solver cplex;
 solve;
 display fo;
+display sum{i in I} sum{j in J} (x[i,j]);
