@@ -20,7 +20,7 @@ param Risorse{J}; # Punti risorsa nodo
 param Posizione{J}; # Posizione nodo
 param Virtual{J}; # Virtualizzazione presente o meno
 
-param CostoWattMese; # Costo mensile W
+param CostoWattMese > 0; # Costo mensile W
 param MaxEccessoServer < 5 integer; # Massimo eccesso server
 
 param Richieste{I}; # Server richiesti all'azienda
