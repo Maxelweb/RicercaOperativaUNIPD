@@ -62,7 +62,8 @@ maximize fo :
 						(1-w)*(Posizione[j]*y[j])
 					)
 			)
-			+ 20*(w)
+			+ 20*(w) # Se messo a 30 o con meno posti tolti, il problema ne farebbe uso
+			- sum{j in J} z[j]; # 1euro per ogni eccesso aggiuntivo, 
 			;
 		
 		
@@ -126,20 +127,21 @@ s.t. Proporzione61 :
 			y[6] = y[1];
 s.t. Proporzione_ded :
 			y[2] = y[3];
+
+		
+		
+# Incremento dal piu' grande al piu' piccolo
+		
 */
-		
-		
-# Incremento
-		
 /*
-s.t. Incremento14 :
-			y[1] >= y[4];
+s.t. Incremento1 :
+			y[6] >= y[5];
 s.t. Incremento_ded :
-			y[2] >= y[3];					
-s.t. Incremento45 :			
-			y[4] >= y[5];
-s.t. Incremento56 :
-			y[5] >= y[6];
+			y[3] >= y[2];					
+s.t. Incremento2 :			
+			y[5] >= y[1];
+s.t. Incremento3 :
+			y[1] >= y[4];
 
 				
 /**/
