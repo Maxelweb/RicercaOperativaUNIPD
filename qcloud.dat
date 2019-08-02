@@ -10,7 +10,6 @@
 
 set I := H D V1 V2 V3 V4 V5 V6 V7 V8; 
 set J := 1 2 3 4 5 6;
-set Bool := 0 1;
 set NotVirt := D;
 
 # Popolamento vettori per i tipi di server
@@ -27,6 +26,7 @@ V6 		3		25.0
 V7 		3		27.5
 V8		4		30.0	;
 
+
 # Popolamento vettori nodi hardware
 
 param : Risorse 	Posizione	Virtual	:=
@@ -37,12 +37,8 @@ param : Risorse 	Posizione	Virtual	:=
 5		20			0			1
 6		28			1			1		;
 
-# Parametri costanti
 
-param CostoWattMese := 0.054;
-param MaxEccessoServer := 5;
-
-# Server che si vogliono inserire
+# Quantita' dei servizi che l'azienda deve evadere
 
 param : Richieste :=
 H 		18
@@ -56,3 +52,16 @@ V6 		1
 V7 		3
 V8		4	;
 
+# Parametri costanti
+
+param CostoWattMese := 0.054;
+param MaxEccessoServer := 5;
+param MinVendita := 0.75;
+
+
+# Attivazione dei parametri bonus
+
+param BonusProporzione := 1;
+param BonusIncremento := 1;
+
+/*---- EOF ----*/

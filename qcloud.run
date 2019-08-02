@@ -1,8 +1,19 @@
+# ==============================
+#		  Modello AMPL
+#	qCloud - Ricerca operativa
+#		Mariano Sciacco
+#			(2019)
+# ==============================
+
 reset;
 model qcloud.mod;
 data qcloud.dat;
 option solver cplex;
 solve;
-display fo;
+display GuadagniMensili;
 display N;
-display sum{i in I} sum{j in J} (x[i,j]);
+display k;
+display w;
+display z;
+# display x;
+# display y;
