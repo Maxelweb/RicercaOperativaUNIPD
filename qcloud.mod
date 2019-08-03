@@ -31,7 +31,7 @@ param N := sum{i in I} Richieste[i]; # Numero totale delle richieste
 
 param BonusProporzione binary; # Attivazione proporzione carico nodi
 param BonusIncremento binary; # Attivazione carico nodi per incremento
-
+param FuturaOttimizzazioneEnergia binary; # Futura ottimizzazione energia elettrica rinnovabile
 
 # Controlli
 
@@ -63,7 +63,7 @@ maximize GuadagniMensili :
 						(1-w)*(Posizione[j]*y[j])
 					)
 			) # Costo corrente
-			+ 20*(w) # Se messo >=30 o posti tolti < 4 (invece di 6), il problema userebbe w=1
+			+ 20*(w) # Se messo >=30 e posti tolti <= 4 (invece di 6), il problema userebbe w=1
 			- sum{j in J} z[j]; # Penale
 			;
 		
@@ -73,7 +73,8 @@ maximize GuadagniMensili :
 # 1) 				
 subject to PesoMassimoServer{j in J} :
 			sum{i in I} (Peso[i] * x[i,j]) <= 
-			(Risorse[j] + z[j] - (6)*(Posizione[j])*(w))
+			(Risorse[j] + z[j] - 
+			(6 - 2*FuturaOttimizzazioneEnergia)*(Posizione[j])*(w))
 			;
 			 
 # 2)			 
