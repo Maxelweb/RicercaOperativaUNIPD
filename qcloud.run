@@ -1,5 +1,5 @@
 # ==============================
-#		  Modello AMPL
+#		Esecuzione AMPL
 #	qCloud - Ricerca operativa
 #		Mariano Sciacco
 #			(2019)
@@ -10,10 +10,39 @@ model qcloud.mod;
 data qcloud.dat;
 option solver cplex;
 solve;
-display GuadagniMensili;
-display N;
-display k;
-display w;
+printf "--------------------------------\n";
+printf "    	Risultati - qCloud		\n";
+printf "--------------------------------\n";
+printf "Tempo di esecuzione: %.3f s\n", _total_solve_time;
+printf "Numero di richieste (N): %i \n", N;
+printf "Richieste soddisfatte (k): %i/%i (%.1f\%) \n", k, N, (k*100)/N;
+printf "Uso delle energie rinnovabili (w): %s \n", 
+		if w==1 then "Si" else "No";
+printf "Guadagni mensili totali (f.o.): EUR %.2f \n",
+		GuadagniMensili;
+printf "\n--------------------------------\n";	
+printf "- Parametri bonus in uso		\n";
+printf "--------------------------------\n";	
+printf "Proporzione: %s \n", 
+	if BonusProporzione==1 
+	then "ATTIVO" 
+	else "-";
+printf "Incremento: %s \n",
+	if BonusIncremento==1 
+	then "ATTIVO" 
+	else "-";
+printf "Futura ottim. energia: %s \n",
+	if FuturaOttimizzazioneEnergia==1 
+	then "ATTIVO" 
+	else "-";
+printf "\n--------------------------------\n";	
+printf "- Variabili del problema		\n";
+printf "--------------------------------\n";	
+printf "ECCESSO PUNTI RISORSA NEI NODI HARDWARE \n";		
 display z;
-# display x;
-# display y;
+printf "DISPOSIZIONE DEI SERVIZI PER NODO \n";
+display x;
+printf "CONSUMO IN WATT NEI NODI\n";
+display y;
+printf "------------- FINE -------------\n\n";
+		 
