@@ -113,7 +113,7 @@ subject to VenditaMinimaServizi_2 :
 
 
 
-# BONUS) Proporzione sul carico di consumo dei nodi
+# BONUS) Proporzione sul carico di consumo dei nodi	
 			
 s.t. Proporzione1 :
 			BonusProporzione == 1 
@@ -130,7 +130,7 @@ s.t. Proporzione4 :
 s.t. Proporzione_ded :
 			BonusProporzione == 1 
 				==> y[2] = y[3];
-
+		
 		
 # BONUS) Incremento dal piu' grande al piu' piccolo
 

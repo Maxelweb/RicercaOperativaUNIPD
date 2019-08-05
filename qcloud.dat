@@ -61,8 +61,8 @@ param MinVendita := 0.75;
 
 # Attivazione dei parametri bonus
 
-param BonusProporzione := 1;
-param BonusIncremento := 0;
-param FuturaOttimizzazioneEnergia := 0;
+param BonusProporzione := 0;
+param BonusIncremento := 1;
+param FuturaOttimizzazioneEnergia := 1;
 
 /*---- EOF ----*/
