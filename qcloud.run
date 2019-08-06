@@ -13,6 +13,7 @@ solve;
 printf "--------------------------------\n";
 printf "    	Risultati - qCloud		\n";
 printf "--------------------------------\n";
+
 printf "Tempo di esecuzione: %.3f s\n", _total_solve_time;
 printf "Numero di richieste (N): %i \n", N;
 printf "Richieste soddisfatte (k): %i/%i (%.1f\%) \n", k, N, (k*100)/N;
@@ -27,9 +28,11 @@ printf "- Spesa energia elettrica e penali: EUR %.2f \n",
 					)) - 20*(w) + sum{j in J} z[j];
 printf "= Guadagni mensili totali (f.o.): EUR %.2f \n",
 		GuadagniMensili;	
+		
 printf "\n--------------------------------\n";	
 printf "- Parametri bonus in uso		\n";
 printf "--------------------------------\n";	
+
 printf "Proporzione: %s \n", 
 	if BonusProporzione==1 
 	then "ATTIVO" 
@@ -42,14 +45,17 @@ printf "Futura ottim. energia: %s \n",
 	if FuturaOttimizzazioneEnergia==1 
 	then "ATTIVO" 
 	else "-";
+
 printf "\n--------------------------------\n";	
 printf "- Variabili del problema		\n";
 printf "--------------------------------\n";	
+
 printf "ECCESSO PUNTI RISORSA NEI NODI HARDWARE \n";		
 display z;
 printf "DISPOSIZIONE DEI SERVIZI PER NODO \n";
 display x;
 printf "CONSUMO IN WATT NEI NODI\n";
 display y;
+
 printf "------------- FINE -------------\n\n";
 		 

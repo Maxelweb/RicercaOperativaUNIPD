@@ -132,7 +132,7 @@ s.t. Proporzione_ded :
 				==> y[2] = y[3];
 		
 		
-# BONUS) Incremento dal piu' grande al piu' piccolo
+# BONUS) Incremento lasco dal piu' grande al piu' piccolo
 
 s.t. Incremento1 :
 			BonusIncremento == 1
