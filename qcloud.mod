@@ -118,10 +118,9 @@ subject to RisparmioConEnergieRinnovabili_1 :
 			h <= ConsumoWattMassimo*(w);	
 			
 subject to RisparmioConEnergieRinnovabili_2 :
-			h = sum{j in J} Virtual[j]*Posizione[j]*y[j];
+			h = sum{j in J} Posizione[j]*y[j];
 			
-			 
-
+			
 
 # BONUS) Proporzione sul consumo elettrico dei nodi 
             
