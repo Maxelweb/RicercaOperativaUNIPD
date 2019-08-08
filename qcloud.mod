@@ -12,6 +12,7 @@ set I; # tipi di server
 set J; # nodi hardware
 set NotVirt; # insieme ausiliario che indica le macchine non virtualizzabili
 
+
 # Parametri del modello
 
 param Peso{I} integer; # Peso del server
@@ -33,6 +34,7 @@ param BonusProporzione binary; # Attivazione proporzione carico nodi
 param BonusIncremento binary; # Attivazione carico nodi per incremento
 param FuturaOttimizzazioneEnergia binary; # Futura ottimizzazione energia elettrica rinnovabile
 
+
 # Controlli
 
 check{i in I} : Peso[i] >= 0 and Peso[i] <= 4; 
@@ -40,8 +42,8 @@ check{i in I} : Peso[i] >= 0 and Peso[i] <= 4;
 check{i in I} : Costo[i] > 0 and Costo[i] <= 1000.0;
 
 # Controlla che le richieste non siano maggiori di quello che i nodi possono offrire 
-# importante! 
-check : sum{j in J} (Risorse[j]+5*Virtual[j]) >= sum{i in I} Peso[i]*Richieste[i];  
+check : sum{j in J} (Risorse[j]+MaxEccessoServer*Virtual[j]) 
+						>= sum{i in I} Peso[i]*Richieste[i];  
 
 
 # Variabili
@@ -63,7 +65,7 @@ maximize GuadagniMensili :
 						(1-w)*(Posizione[j]*y[j])
 					)
 			) # Costo corrente
-			+ 20*(w) # Se messo >=30 e posti tolti <= 4 (invece di 6), il problema userebbe w=1
+			+ 20*(w) # Incentivo statale con uso di energie rinnovabili
 			- sum{j in J} z[j]; # Penale
 			;
 		
@@ -106,14 +108,15 @@ subject to NumeroMassimoServerPerNodo{i in I} :
 			
 # 6)
 subject to VenditaMinimaServizi_1 :
-			sum{i in I} sum{j in J} x[i,j] = k;
+			sum{i in I} sum{j in J} x[i,j] = k
+			;
 			
 subject to VenditaMinimaServizi_2 :
-			k >= N * MinVendita;				
+			k >= N * MinVendita
+			;				
 
 
-
-# BONUS) Proporzione sul carico di consumo dei nodi	
+# BONUS) Proporzione sul consumo elettrico dei nodi	
 			
 s.t. Proporzione1 :
 			BonusProporzione == 1 
@@ -132,7 +135,7 @@ s.t. Proporzione_ded :
 				==> y[2] = y[3];
 		
 		
-# BONUS) Incremento lasco dal piu' grande al piu' piccolo
+# BONUS) Incremento - dal piu' grande al piu' piccolo
 
 s.t. Incremento1 :
 			BonusIncremento == 1
