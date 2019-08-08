@@ -1,8 +1,8 @@
 # ==============================
-#		  Dati AMPL
-#	qCloud - Ricerca operativa
-#		Mariano Sciacco
-#			(2019)
+#         Dati AMPL
+#   qCloud - Ricerca operativa
+#       Mariano Sciacco
+#           (2019)
 # ==============================
 
 
@@ -15,43 +15,43 @@ set NotVirt := D;
 
 # Popolamento vettori per i tipi di server
 
-param : Peso	Costo :=
-H 		1		7.5
-D 		4		50.0
-V1 		2		12.5
-V2 		2		15.0
-V3 		2		17.5
-V4 		3		20.0
-V5 		3		22.5
-V6 		3		25.0
-V7 		3		27.5
-V8		4		30.0	;
+param : Peso    Costo :=
+H       1       7.5
+D       4       50.0
+V1      2       12.5
+V2      2       15.0
+V3      2       17.5
+V4      3       20.0
+V5      3       22.5
+V6      3       25.0
+V7      3       27.5
+V8      4       30.0    ;
 
 
 # Popolamento vettori nodi hardware
 
-param : Risorse 	Posizione	Virtual	:=
-1		18			1			1	
-2		16			1			0
-3		24			0			0
-4		16			0			1
-5		20			0			1
-6		28			1			1		;
+param : Risorse     Posizione   Virtual :=
+1       18          1           1   
+2       16          1           0
+3       24          0           0
+4       16          0           1
+5       20          0           1
+6       28          1           1       ;
 
 
 # Richieste effettuate all'azienda
 
 param : Richieste :=
-H 		18
-D 		12
-V1 		4
-V2 		6
-V3 		1
-V4 		9
-V5 		2
-V6 		1
-V7 		3
-V8		1	;
+H       18
+D       12
+V1      4
+V2      6
+V3      1
+V4      9
+V5      2
+V6      1
+V7      3
+V8      1   ;
 
 
 # Parametri costanti

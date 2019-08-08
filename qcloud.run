@@ -1,8 +1,8 @@
 # ==============================
-#		Esecuzione AMPL
-#	qCloud - Ricerca operativa
-#		Mariano Sciacco
-#			(2019)
+#       Esecuzione AMPL
+#   qCloud - Ricerca operativa
+#       Mariano Sciacco
+#           (2019)
 # ==============================
 
 reset;
@@ -11,46 +11,46 @@ data qcloud.dat;
 option solver cplex;
 solve;
 printf "--------------------------------\n";
-printf "    	Risultati - qCloud		\n";
+printf "        Risultati - qCloud      \n";
 printf "--------------------------------\n";
 
 printf "Tempo di esecuzione: %.3f s\n", _total_solve_time;
 printf "Numero di richieste (N): %i \n", N;
 printf "Richieste soddisfatte (k): %i/%i (%.1f\%) \n", k, N, (k*100)/N;
 printf "Uso delle energie rinnovabili (w): %s \n", 
-		if w==1 then "Si" else "No";
+        if w==1 then "Si" else "No";
 printf "+ Guadagni sui servizi: EUR %.2f \n",
-		(sum{i in I} sum{j in J} Costo[i]*x[i,j]);		
+        (sum{i in I} sum{j in J} Costo[i]*x[i,j]);      
 printf "- Spesa energia elettrica e penali: EUR %.2f \n",
-		CostoWattMese * (
-					sum{j in J} (
-						(1 - Posizione[j])*y[j] + (1-w)*(Posizione[j]*y[j])
-					)) - 20*(w) + sum{j in J} z[j];
+        CostoWattMese * (
+                    sum{j in J} (
+                        (1 - Posizione[j])*y[j] + (1-w)*(Posizione[j]*y[j])
+                    )) - 20*(w) + sum{j in J} z[j];
 printf "= Guadagni mensili totali (f.o.): EUR %.2f \n",
-		GuadagniMensili;	
-		
-printf "\n--------------------------------\n";	
-printf "- Parametri bonus in uso		\n";
-printf "--------------------------------\n";	
+        GuadagniMensili;    
+        
+printf "\n--------------------------------\n";  
+printf "- Parametri bonus in uso        \n";
+printf "--------------------------------\n";    
 
 printf "Proporzione: %s \n", 
-	if BonusProporzione==1 
-	then "ATTIVO" 
-	else "-";
+    if BonusProporzione==1 
+    then "ATTIVO" 
+    else "-";
 printf "Incremento: %s \n",
-	if BonusIncremento==1 
-	then "ATTIVO" 
-	else "-";
+    if BonusIncremento==1 
+    then "ATTIVO" 
+    else "-";
 printf "Futura ottim. energia: %s \n",
-	if FuturaOttimizzazioneEnergia==1 
-	then "ATTIVO" 
-	else "-";
+    if FuturaOttimizzazioneEnergia==1 
+    then "ATTIVO" 
+    else "-";
 
-printf "\n--------------------------------\n";	
-printf "- Variabili del problema		\n";
-printf "--------------------------------\n";	
+printf "\n--------------------------------\n";  
+printf "- Variabili del problema        \n";
+printf "--------------------------------\n";    
 
-printf "ECCESSO PUNTI RISORSA NEI NODI HARDWARE \n";		
+printf "ECCESSO PUNTI RISORSA NEI NODI HARDWARE \n";        
 display z;
 printf "DISPOSIZIONE DEI SERVIZI PER NODO \n";
 display x;
@@ -58,4 +58,3 @@ printf "CONSUMO IN WATT NEI NODI\n";
 display y;
 
 printf "------------- FINE -------------\n\n";
-		 
