@@ -17,7 +17,7 @@ set NotVirt := D;
 
 param : Peso    Costo :=
 H       1       7.5
-D       4       50.0
+D       4       60.0
 V1      2       12.5
 V2      2       15.0
 V3      2       17.5
@@ -42,23 +42,24 @@ param : Risorse     Posizione   Virtual :=
 # Richieste effettuate all'azienda
 
 param : Richieste :=
-H       18
+H       19
 D       12
-V1      4
-V2      6
+V1      2
+V2      4
 V3      1
-V4      9
-V5      2
-V6      1
+V4      3
+V5      1
+V6      2
 V7      3
-V8      1   ;
+V8      2   ;
 
 
 # Parametri costanti
 
 param CostoWattMese := 0.054;
 param MaxEccessoServer := 5;
-param MinVendita := 0.75;
+param MinVendita := 0.70;
+param ConsumoWattMassimo := 10000;
 
 
 # Attivazione dei parametri bonus

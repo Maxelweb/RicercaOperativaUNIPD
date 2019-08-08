@@ -27,6 +27,7 @@ param Richieste{I}; # Server richiesti all'azienda
 param CostoWattMese > 0; # Costo mensile Watt
 param MaxEccessoServer <= 5 integer; # Massimo eccesso server
 param MinVendita; # Percentuale minima di vendita
+param ConsumoWattMassimo <= 10000 integer;
 
 param N := sum{i in I} Richieste[i]; # Numero totale delle richieste
 
@@ -53,18 +54,14 @@ var y{J} >= 0 integer; # consumo watt nodo j
 var w binary; # uso delle energie rinnovabili
 var z{J} >= 0, <= MaxEccessoServer integer; # eccesso punti risorsa
 var k integer; # numero degli ordini evasi
+var h >= 0 integer; # watt da non pagare se con rinnovabili
 
 # Funzione obiettivo
 
 maximize GuadagniMensili : 
             (sum{i in I} sum{j in J} Costo[i]*x[i,j]) 
             - CostoWattMese * (
-                    sum{j in J} (
-                        (1 - Posizione[j])*y[j]
-                        +
-                        (1-w)*(Posizione[j]*y[j])
-                    )
-            ) # Costo corrente
+                    sum{j in J} (y[j]) - h) # Costo corrente
             + 20*(w) # Incentivo statale con uso di energie rinnovabili
             - sum{j in J} z[j]; # Penale
             ;
@@ -114,6 +111,16 @@ subject to VenditaMinimaServizi_1 :
 subject to VenditaMinimaServizi_2 :
             k >= N * MinVendita
             ;               
+
+	
+# 7) 
+subject to RisparmioConEnergieRinnovabili_1 :
+			h <= ConsumoWattMassimo*(w);	
+			
+subject to RisparmioConEnergieRinnovabili_2 :
+			h = sum{j in J} Virtual[j]*Posizione[j]*y[j];
+			
+			 
 
 
 # BONUS) Proporzione sul consumo elettrico dei nodi 

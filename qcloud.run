@@ -19,13 +19,13 @@ printf "Numero di richieste (N): %i \n", N;
 printf "Richieste soddisfatte (k): %i/%i (%.1f\%) \n", k, N, (k*100)/N;
 printf "Uso delle energie rinnovabili (w): %s \n", 
         if w==1 then "Si" else "No";
+printf "Watt risparmiati con energia rinnovabile (h): %i WATT\n",
+		h;         
 printf "+ Guadagni sui servizi: EUR %.2f \n",
         (sum{i in I} sum{j in J} Costo[i]*x[i,j]);      
 printf "- Spesa energia elettrica e penali: EUR %.2f \n",
-        CostoWattMese * (
-                    sum{j in J} (
-                        (1 - Posizione[j])*y[j] + (1-w)*(Posizione[j]*y[j])
-                    )) - 20*(w) + sum{j in J} z[j];
+        CostoWattMese * (sum{j in J} (y[j]) - h)
+        - 20*(w) + sum{j in J} z[j];
 printf "= Guadagni mensili totali (f.o.): EUR %.2f \n",
         GuadagniMensili;    
         
