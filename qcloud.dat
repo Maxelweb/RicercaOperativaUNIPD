@@ -32,7 +32,7 @@ V8      4       30.0    ;
 
 param : Risorse     Posizione   Virtual :=
 1       18          1           1   
-2       16          1           0
+2       18          1           0
 3       24          0           0
 4       16          0           1
 5       20          0           1
@@ -43,11 +43,11 @@ param : Risorse     Posizione   Virtual :=
 
 param : Richieste :=
 H       19
-D       12
+D       11
 V1      2
 V2      4
-V3      1
-V4      3
+V3      2
+V4      5
 V5      1
 V6      2
 V7      3
@@ -58,8 +58,7 @@ V8      2   ;
 
 param CostoWattMese := 0.054;
 param MaxEccessoServer := 5;
-param MinVendita := 0.70;
-param ConsumoWattMassimo := 10000;
+param MinVendita := 0.75;
 
 
 # Attivazione dei parametri bonus
