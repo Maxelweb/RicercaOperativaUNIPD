@@ -7,7 +7,7 @@
 
 reset;
 model qcloud.mod;
-data qcloud.dat;
+data qcloud_2.dat;
 option solver cplex;
 solve;
 printf "--------------------------------\n";

@@ -1,0 +1,70 @@
+# ==============================
+#         Dati 2 AMPL
+#   qCloud - Ricerca operativa
+#       Mariano Sciacco
+#           (2019)
+# ==============================
+
+
+# Popolamento degli insiemi
+
+set I := H D V1 V2 V3 V4 V5 V6 V7 V8; 
+set J := 1 2 3 4 5 6;
+set NotVirt := D;
+
+
+# Popolamento vettori per i tipi di server
+
+param : Peso    Costo :=
+H       1       7.5
+D       4       60.0
+V1      2       12.5
+V2      2       15.0
+V3      2       17.5
+V4      3       20.0
+V5      3       22.5
+V6      3       25.0
+V7      3       27.5
+V8      4       30.0    ;
+
+
+# Popolamento vettori nodi hardware
+
+param : Risorse     Posizione   Virtual :=
+1       24          1           1   
+2       12          1           0
+3        6          0           0
+4       24          0           1
+5       22          0           1
+6       28          1           1       ;
+
+
+# Richieste effettuate all'azienda
+
+param : Richieste :=
+H       5
+D       3
+V1      4
+V2      10
+V3      2
+V4      6
+V5      3
+V6      2
+V7      2
+V8      12   ;
+
+
+# Parametri costanti
+
+param CostoWattMese := 0.054;
+param MaxEccessoServer := 5;
+param MinVendita := 0.75;
+
+
+# Attivazione dei parametri bonus
+
+param BonusProporzione := 0;
+param BonusIncremento := 0;
+param FuturaOttimizzazioneEnergia := 1;
+
+/*---- EOF ----*/
