@@ -1,5 +1,5 @@
 # ==============================
-#         Dati 2 AMPL
+#     Dati Alternativi AMPL
 #   qCloud - Ricerca operativa
 #       Mariano Sciacco
 #           (2019)
@@ -65,6 +65,6 @@ param MinVendita := 0.75;
 
 param BonusProporzione := 0;
 param BonusIncremento := 0;
-param FuturaOttimizzazioneEnergia := 1;
+param FuturaOttimizzazioneEnergia := 0;
 
 /*---- EOF ----*/

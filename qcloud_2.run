@@ -1,18 +1,19 @@
 # ==============================
 #       Esecuzione AMPL 
-#     (Set dati originale)
+#    (Set dati alternativo)
 #   qCloud - Ricerca operativa
 #       Mariano Sciacco
 #           (2019)
 # ==============================
 
+
 reset;
 model qcloud.mod;
-data qcloud.dat;
+data qcloud_2.dat;
 option solver cplex;
 solve;
 printf "--------------------------------\n";
-printf "        Risultati - qCloud      \n";
+printf " Risultati alternativi - qCloud \n";
 printf "--------------------------------\n";
 
 printf "Tempo di esecuzione: %.3f s\n", _total_solve_time;
